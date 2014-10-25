@@ -1,4 +1,5 @@
 VideoChatTest::Application.routes.draw do
+  devise_for :users
   mount Vline::API => '_vline/api'
   match '_vline/api/v1/oauth/authorize' => 'vline#authorize', :via => :get
   match '_vline/launch' => 'vline#launch', :via => :get

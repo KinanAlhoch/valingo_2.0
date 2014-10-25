@@ -3,7 +3,7 @@ require 'vline'
 
 class VlineController < ApplicationController
   # require login
-#  before_filter :login_required
+  #  before_filter :login_required
 
   def initialize(currentUserId = nil)
     if currentUserId
@@ -15,7 +15,7 @@ class VlineController < ApplicationController
     if params[:userId]
       userId = params[:userId]
     end
-    redirect_to Vline.launch_url_for(1, userId)
+    redirect_to Vline.launch_url_for(current_user.id, userId)
   end
 
   def authorize
