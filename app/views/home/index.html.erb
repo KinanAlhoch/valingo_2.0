@@ -3,7 +3,7 @@ Welcome
 <% @users.each do |user| %>
   <div>
 
-    User: <%= user.name %>,
+    User: <%= user.email %>,
     Presence: <span id="<%= user.id %>">offline</span>,
     <%= vline_launch "Launch Web Client", user %>
     <span id="call-<%= user.id %>" style="display:none">
