@@ -1,13 +1,17 @@
 Welcome
 <%#= vline_launch 'Launch' %>
-<div>
-  User: <%= user.name %>,
-  Presence: <span id="<%= user.id %>">offline</span>,
-  <%= vline_launch "Launch Web Client", user %>
-  <span id="call-<%= user.id %>" style="display:none">
-    , <a onclick="call('<%= user.id %>')" href="javascript:void(0)">Call</a>
-  </span>
-</div>
+<% @users.each do |user| %>
+  <div>
+
+    User: <%= user.name %>,
+    Presence: <span id="<%= user.id %>">offline</span>,
+    <%= vline_launch "Launch Web Client", user %>
+    <span id="call-<%= user.id %>" style="display:none">
+      , <a onclick="call('<%= user.id %>')" href="javascript:void(0)">Call</a>
+    </span>
+
+  </div>
+<%end%>
 <script type="text/javascript">
   var loginToken = "<%= Vline.create_login_token(current_user.id) %>";
   var serviceId = "<%= Vline.service_id %>";
