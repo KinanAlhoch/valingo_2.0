@@ -16,7 +16,7 @@ Welcome
   var loginToken = "<%= Vline.create_login_token(current_user.id) %>";
   var serviceId = "<%= Vline.service_id %>";
   var authId = "<%= Vline.provider_id %>";
-  var profile = {"displayName" : "<%= current_user.name %>"};
+  var profile = {"displayName" : "<%= current_user.email %>"};
 
   var people = [
 <% @users.each do |user| %>
