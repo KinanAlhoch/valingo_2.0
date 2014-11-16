@@ -2,8 +2,8 @@ require 'digest/md5'
 require 'vline'
 
 class VlineController < ApplicationController
-  # require login
-  #  before_filter :login_required
+  require login
+  before_filter :login_required
 
   def initialize(currentUserId = nil)
     if currentUserId
