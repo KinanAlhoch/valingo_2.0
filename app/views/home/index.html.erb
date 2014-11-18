@@ -1,85 +1,61 @@
-<div class="row">
-  <div class="page-header">
-    <h1>Welcome</h1>
+<%= form_tag "/home/add_feed", :multipart => true do %>
+  
+  <div class="row" style="margin-left: 10px;">
+   
+      <div class="tiles white">
+	<textarea rows="3" name="status" class="form-control user-status-box post-input"  placeholder="Whats on your mind?" style="width: 100%"></textarea>
+      </div>
+      <div class="tiles grey padding-10">
+	<%#*<div class="pull-left">%>
+	  <%#*<button class="btn btn-default btn-sm btn-small" type="button" onclick="$('#status_file').click();">%>
+	    <%#*<i class="fa fa-camera"></i>%>
+	  <%#*</button>%>
+	  <%#= file_field_tag 'status_file', :style => "display: none;", :id => "status_file" %>
+
+	<%#*</div>%>
+	<div class="pull-right">
+	  <button class="btn btn-primary btn-sm btn-small" type="submit">POST</button>
+	</div>
+	<div class="clearfix"></div>
+      </div>
+  
   </div>
-<%#= vline_launch 'Launch' %>
-  <% @users.each do |user| %>
-    <div>
+<%end%><br/>
+<%@feeds.each do |feed|%>
+  <div class="row" style="margin-left: 10px;">
+    <%#if feed.user == current_user%>
+      <%#*<span style = "float:right;font-size:16px;">%>
+<%#= link_to "X", knowledge_feed_path(feed), :method => :delete, :confirm => "Are you sure!" %></span>
+    <%#end%>
+   
+      <div class="user-profile-pic-wrapper">
+	
+      </div>
+      <div class="info-wrapper">
+	<div class="username" style="color: grey">
+	  <a href="<%= user_path(feed.user) %>">
+	    <span class="dark-text">
+	      <%= feed.user.email %>
+	    </span> <span class="dark-text"></span>
+	  </a>
+	</div>
+	<div class="info" style="font-size: 16px;
+	     font-family: -webkit-body; color: black">
+	     <%= feed.status %>
+	</div>
+	
+	<div class="more-details">
+	  <ul class="post-links">
+	    <li><a href="#" class="muted"><%= time_ago_in_words(feed.created_at) %></a></li>
+	  </ul>
+	</div>
+	<div class="clearfix"></div>
 
-      User: <%= user.email %>,
-      Presence: <span id="<%= user.id %>">
-	offline
-      </span>,
-      <%= vline_launch "Launch Web Client", user %>
-      <span id="call-<%= user.id %>"
-	    style="display:none">
-	, <a onclick="call('<%= user.id %>')"
-	     href="javascript:void(0)">
-	    Call
-	</a>
-      </span>
-
-    </div>
-  <%end%>
-</div>
-<script type="text/javascript">
-  var loginToken = "<%= Vline.create_login_token(current_user.id) %>";
-  var serviceId = "<%= Vline.service_id %>";
-  var authId = "<%= Vline.provider_id %>";
-  var profile = {"displayName" : "<%= current_user.email %>"};
-
-  var people = [
-<% @users.each do |user| %>
-      "<%= user.id %>",
-<% end %>
-  ];
-
-  var client = vline.Client.create({"serviceId": serviceId, "ui": true});
-
-  var session;
-
-  function call(userId) {
-    if (session) {
-      session.getPerson(userId)
-      .done(function(person) {
-	person.startMedia();
-      });
-    }
-  }
-
-  client.on('login', function(e) {
-    session = e.target;
-
-    for (var i=0; i < people.length; i++) {
-      session.getPerson(people[i])
-      .done(function(person) {
-	var updatePresence = function(e) {
-	  var person = e.target;
-	  var presenceState = person.getPresenceState();
-	  var shortId = person.getShortId();
-	  var elem = document.getElementById(shortId);
-	  elem.innerHTML = presenceState;
-
-	  // Show/hide the call link based on presence
-	  elem = document.getElementById('call-' + shortId);
-	  if (presenceState === "online" && shortId !== "<%= current_user.id %>") {
-	    elem.style.display = "";
-	  } else {
-	    elem.style.display = "none";
-	  }
-	};
-
-	updatePresence({target: person});
-	person.on('change:presenceState', updatePresence);
-      });
-    }
-  });
-
-  client.login(authId, profile, loginToken);
-</script>
-
-
-<%#*Service ID  asdfasdfadsasdfsdfsdfdsf%>
-<%#*Client ID  iT6YsR0C9aIRQwIKwbtz_s6veKxVJ2Xco3x8kHJtpSE%>
-<%#*Client Secret  SSl4Og8A-ZJCquU4Xz5nP9Lj18FdI6WVeaTLm36D5QU%>
+	<div class="clearfix"></div>
+	
+      </div>
+      <div class="clearfix"></div>
+    
+  </div><br/>
+<%end%>
 

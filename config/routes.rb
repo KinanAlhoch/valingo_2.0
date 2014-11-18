@@ -8,6 +8,13 @@ VideoChatTest::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'home#index'
+   post "/home/add_feed", :to => "home#add_feed"
+
+  resources :users do
+    member do
+      get :add_pal
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

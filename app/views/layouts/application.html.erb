@@ -72,9 +72,17 @@
 	  </div><!--/.well -->
 	</div><!--/span-->
 	
-	<div class="span9">
+	<div class="span6">
 	  <%= bootstrap_flash %>
 	  <%= yield %>
+	</div>
+	<div class="span3">
+	  <h3>Recommended Pals</h3>
+	  <% recommended_pals.each do |pal| %>
+	  <%= pal.email %>
+	  <%= link_to "Add as a pal", "#" %>
+	  <%end%>
+
 	</div>
 
       </div><!--/row-->
