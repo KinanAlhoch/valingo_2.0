@@ -4,7 +4,21 @@
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+    <%= f.email_field :email, autofocus: true %></div>
+
+  <div><%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %></div>
+
+  <div><%= f.label :sex %><br />
+    Male:<%= f.radio_button :sex, :value => "Male", autofocus: true %>
+    Female:  <%= f.radio_button :sex, :value => "Female", autofocus: true %>
+  </div>
+
+  <div><%= f.label :date_of_birth %><br />
+    <%= f.text_field :date_of_birth, autofocus: true, placeholder: "yyyy-mm-dd" %></div>
+
+  <div><%= f.label :bio %><br />
+    <%= f.text_area :bio, autofocus: true, placeholder: "Tell something about yourself" %></div>
 
   <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>

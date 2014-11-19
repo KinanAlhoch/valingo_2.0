@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118183913) do
+ActiveRecord::Schema.define(version: 20141119185504) do
 
   create_table "follows", force: true do |t|
     t.string   "follower_type"
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 20141118183913) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "sex"
+    t.date     "date_of_birth"
+    t.text     "languages_spoken"
+    t.text     "languages_learn"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "picture"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
