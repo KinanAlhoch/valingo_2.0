@@ -11,6 +11,9 @@ VideoChatTest::Application.routes.draw do
    post "/home/add_feed", :to => "home#add_feed"
 
   resources :users do
+    collection do
+      get :pals
+    end
     member do
       get :add_pal
     end

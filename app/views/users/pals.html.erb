@@ -1,0 +1,11 @@
+<div class="row" style="margin-left: 10px;">
+  <%unless @users.blank?%>
+    <%@users.each do |user|%>
+      <div class="col-md-4">
+	<%= link_to user.email, "#" %>
+      </div>
+    <%end%>
+  <%else%>
+    You have no Pals
+  <%end%>
+</div>

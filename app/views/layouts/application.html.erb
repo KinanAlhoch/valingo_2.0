@@ -49,7 +49,7 @@
           <a class="brand" href="#">Valingo</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Home", "#"  %></li>
+              <li><%= link_to "Home", root_path  %></li>
               <li><%= link_to "About", "#"  %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
             </ul>
@@ -66,12 +66,12 @@
 	    <ul class="nav nav-list">
 	      <li class="nav-header"></li>
 	      <li><%= link_to "Edit Profile", "#"  %></li>
-	      <li><%= link_to "Pals", "#"  %></li>
+	      <li><%= link_to "Pals", pals_users_path  %></li>
 	      <li><%= link_to "Message", "#"  %></li>
 	    </ul>
 	  </div><!--/.well -->
 	</div><!--/span-->
-	
+
 	<div class="span6">
 	  <%= bootstrap_flash %>
 	  <%= yield %>
@@ -79,8 +79,8 @@
 	<div class="span3">
 	  <h3>Recommended Pals</h3>
 	  <% recommended_pals.each do |pal| %>
-	  <%= pal.email %>
-	  <%= link_to "Add as a pal", "#" %>
+	    <%= pal.email %>
+	    <%= link_to "Add as a pal", add_pal_user_path(pal) %>
 	  <%end%>
 
 	</div>
