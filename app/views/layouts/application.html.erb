@@ -79,7 +79,7 @@
 	<div class="span3">
 	  <h3>Recommended Pals</h3>
 	  <% recommended_pals.each do |pal| %>
-	    <%= link_to pal.email, user_path(user) %>
+	    <%= link_to pal.email, user_path(pal) %>
 	    <%= link_to "Add as a pal", add_pal_user_path(pal) %>
 	  <%end%>
 
