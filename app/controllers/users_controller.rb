@@ -12,4 +12,8 @@ class UsersController < ApplicationController
     flash[:notice] = "#{@user.email} has been added to you pals list"
     redirect_to pals_users_path
   end
+
+  def show
+    @user = User.find(params[:id])
+  end
 end

@@ -67,7 +67,7 @@
 	      <li class="nav-header"></li>
 	      <li><%= link_to "Edit Profile", "#"  %></li>
 	      <li><%= link_to "Pals", pals_users_path  %></li>
-	      <li><%= link_to "Message", "#"  %></li>
+	      <li><%= link_to "Messages", "#"  %></li>
 	    </ul>
 	  </div><!--/.well -->
 	</div><!--/span-->
@@ -79,7 +79,7 @@
 	<div class="span3">
 	  <h3>Recommended Pals</h3>
 	  <% recommended_pals.each do |pal| %>
-	    <%= pal.email %>
+	    <%= link_to pal.email, user_path(user) %>
 	    <%= link_to "Add as a pal", add_pal_user_path(pal) %>
 	  <%end%>
 
