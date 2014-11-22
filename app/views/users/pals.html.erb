@@ -3,6 +3,10 @@
     <%@users.each do |user|%>
       <div class="col-md-4">
 	<%= link_to user.email, user_path(user) %>
+	<span id="<%= user.id %>">
+	offline
+      </span>,
+       <% vline_launch "Launch Web Client", user %>
 	<span id="call-<%= user.id %>"
 	      style="display:none">
 	    , <a onclick="call('<%= user.id %>')"
