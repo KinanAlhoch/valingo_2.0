@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  require 'vline'
 
   def pals
     @users = current_user.followers(User)
