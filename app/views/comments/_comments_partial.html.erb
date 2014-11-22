@@ -1,0 +1,46 @@
+<% object.root_comments.each do |comment| %>
+  <div class="post comments-section">
+    <div class="user-profile-pic-wrapper">
+      <div class="user-profile-pic-normal">
+	
+      </div>
+    </div>
+    <div class="info-wrapper">
+      <div class="username">
+	<span class="dark-text">
+	  <a href="<%= user_path(comment.user) %>">
+	    <%= comment.user.name %>
+	  </a>
+	</span>
+      </div>
+      <div class="info" style="color: black; font-size: 15px;">
+	
+	  <%= comment.body %>
+
+      </div>
+      <div class="more-details">
+	<ul class="post-links">
+	  <li><a href="#" class="muted"><%=time_ago_in_words(comment.created_at) %></a></li>
+	</ul>
+      </div>
+
+    </div>
+    <div class="clearfix"></div>
+  </div>
+<%end%>
+<%= form_for Comment.new, :remote => true do |f| %>
+  <%= hidden_field_tag "object_id", object.id  %>
+  <%= hidden_field_tag "class_name", object.class %>
+  <div class="post comments-section">
+    <div class="row-fluid">
+      <div class="input-append success date col-md-12">
+
+	<%= f.text_field :body, :placeholder => "Enter Comment", :style => "width:500px" %>
+	<div class="desktop-only mobile-only">
+	  <%= f.submit "enter" %>
+	</div>
+      </div>
+    </div>
+  </div>
+<%end%>
+

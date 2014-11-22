@@ -19,6 +19,8 @@ VideoChatTest::Application.routes.draw do
     end
   end
 
+  resources :comments
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
