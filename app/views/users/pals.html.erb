@@ -3,10 +3,74 @@
     <%@users.each do |user|%>
       <div class="col-md-4">
 	<%= link_to user.email, user_path(user) %>
-	<%#= link_to "Send Message", "#{}", class: "btn" %>
+	<span id="call-<%= user.id %>"
+	      style="display:none">
+	    , <a onclick="call('<%= user.id %>')"
+	       href="javascript:void(0)">
+		Call
+	  </a>
+	</span>
       </div>
     <%end%>
   <%else%>
     You have no Pals
   <%end%>
 </div>
+
+<script type="text/javascript">
+  var loginToken = "<%= Vline.create_login_token(current_user.id) %>";
+  var serviceId = "<%= Vline.service_id %>";
+  var authId = "<%= Vline.provider_id %>";
+  var profile = {"displayName" : "<%= current_user.email %>"};
+
+  var people = [
+<% @users.each do |user| %>
+      "<%= user.id %>",
+<% end %>
+  ];
+
+  var client = vline.Client.create({"serviceId": serviceId, "ui": true});
+
+  var session;
+
+  function call(userId) {
+    if (session) {
+      session.getPerson(userId)
+      .done(function(person) {
+	person.startMedia();
+      });
+    }
+  }
+
+  client.on('login', function(e) {
+    session = e.target;
+
+    for (var i=0; i < people.length; i++) {
+      session.getPerson(people[i])
+      .done(function(person) {
+	var updatePresence = function(e) {
+	  var person = e.target;
+	  var presenceState = person.getPresenceState();
+	  var shortId = person.getShortId();
+	  var elem = document.getElementById(shortId);
+	  elem.innerHTML = presenceState;
+
+	  // Show/hide the call link based on presence
+	  elem = document.getElementById('call-' + shortId);
+	  if (presenceState === "online" && shortId !== "<%= current_user.id %>") {
+	    elem.style.display = "";
+	  } else {
+	    elem.style.display = "none";
+	  }
+	};
+
+	updatePresence({target: person});
+	person.on('change:presenceState', updatePresence);
+      });
+    }
+  });
+
+  client.login(authId, profile, loginToken);
+</script>
+
+
