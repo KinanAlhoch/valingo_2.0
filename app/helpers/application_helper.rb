@@ -5,4 +5,10 @@ module ApplicationHelper
     already_friends_ids << current_user.id
     User.where('id NOT IN (?)', already_friends_ids)
   end
+
+
+  def sender(message)
+    User.find(message.sent_messageable_id)
+  end
+
 end

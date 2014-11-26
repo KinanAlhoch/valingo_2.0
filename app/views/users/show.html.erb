@@ -22,5 +22,10 @@
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               root_path, :class => 'btn'  %>
+  <%unless current_user == @user%>
+
+    <%= link_to "Send Message", new_message_path(:user_id => @user.id), :class => "btn" %>
+
+<%end%>
 
 </div>

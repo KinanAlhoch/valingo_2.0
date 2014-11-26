@@ -1,0 +1,17 @@
+
+<br/>
+<div style="width: 100%;float: left">
+  <%unless @messages.blank?%>
+    <%@messages.each do |message|%>
+      <div style="width: 100%;padding: 17px;height: 100px;background: #eee;border-radius: 10px;color: black; margin-bottom: 5px;">
+	<%sender = sender(message)%>
+	<b><%= link_to sender.name, user_path(sender) %></b> <br/>
+	<b><%= message.topic %>:</b>&nbsp;<%= message.body %>
+	<%= link_to "View Conversation", conversation_message_path(message) %>
+      </div>
+    <%end%>
+  <%else%>
+    You have no messages
+  <%end%>
+</div>
+

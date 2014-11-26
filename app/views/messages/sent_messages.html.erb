@@ -1,0 +1,25 @@
+<div style="width: 100%;float: left;margin-bottom: 20px">
+  <div style="width: 32;float: left;border: 1px solid black; padding: 10px; border-radius: 6px;">
+    <%= link_to "Inbox", messages_path %>
+  </div>
+  <div style="width: 32;float: left;border: 1px solid black; padding: 10px; border-radius: 6px;margin-left: 20px;">
+    <%= link_to "Sent Messages", sent_messages_messages_path %>
+
+
+  </div>
+</div>
+<div style="width: 100%;float: left">
+  <%unless @messages.blank?%>
+    <%@messages.each do |message|%>
+      <div style="width: 100%;padding: 17px;height: 100px;background: #eee;border-radius: 10px;color: black; margin-bottom: 5px;">
+	<%sender = sender(message)%>
+	<b><%= link_to sender.name, user_path(sender) %></b> <br/>
+	<b><%= message.topic %>:</b>&nbsp;<%= message.body %>
+
+	<%= link_to "View Conversation", conversation_message_path(message) %>
+      </div>
+    <%end%>
+  <%else%>
+    You have no messages
+  <%end%>
+</div>

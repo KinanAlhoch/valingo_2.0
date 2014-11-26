@@ -18,7 +18,17 @@ VideoChatTest::Application.routes.draw do
       get :add_pal
     end
   end
-
+  resources :messages do
+    collection do
+      post :send_message
+      post :reply
+      get :sent_messages
+    end
+    member do
+      get :reply_message
+      get :conversation
+    end
+  end
   resources :comments
 
   # Example of regular route:
