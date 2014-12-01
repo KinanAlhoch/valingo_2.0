@@ -1,5 +1,5 @@
 <%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
- 
+
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
@@ -26,9 +26,23 @@
   </div>
 
 
+  <div class="control-group">
+    <%= f.label :languages_spoken, 'Languages You can Speak', :class => 'control-label'  %>
+    <div class="controls">
+      <%= f.select(:languages_spoken, languages_list, {}, {multiple: true}) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :languages_learn, 'Languages You want to learn', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select(:languages_learn,languages_list,{}, {multiple: true}) %>
+    </div>
+  </div>
+
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                root_path, :class => 'btn' %>
+      root_path, :class => 'btn' %>
   </div>
 <% end %>

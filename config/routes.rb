@@ -16,6 +16,7 @@ VideoChatTest::Application.routes.draw do
     end
     member do
       get :add_pal
+      get :unfriend
     end
   end
   resources :messages do

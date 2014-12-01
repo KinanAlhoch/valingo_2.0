@@ -11,4 +11,10 @@ module ApplicationHelper
     User.find(message.sent_messageable_id)
   end
 
+  def languages_list
+    [['English', 'English'],['Spanish', 'Spanish'],['Arabic', 'Arabic'],['Russian', 'Russian'],
+      ['Japanese', 'Japanese'],['German', 'German'],['French', 'French'],['Urdu', 'Urdu'],['Hindi', 'Hindi']
+    ]
+  end
+
 end

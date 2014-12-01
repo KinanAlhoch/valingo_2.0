@@ -16,16 +16,22 @@
   <dd><%= @user.state %></dd>
   <dt><strong><%= model_class.human_attribute_name(:country) %>:</strong></dt>
   <dd><%= @user.country %></dd>
+  <dt style="margin-left: -39px;
+      width: 200px;"><strong>Languages You can speak:</strong></dt>
+  <dd><%= @user.languages_spoken.to_sentence %></dd>
+  <dt style="margin-left: -47px;
+      width: 210px;"><strong>Languages you want to learn:</strong></dt>
+  <dd><%= @user.languages_learn.to_sentence %></dd>
 
 </dl>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              root_path, :class => 'btn'  %>
+    root_path, :class => 'btn'  %>
   <%unless current_user == @user%>
 
     <%= link_to "Send Message", new_message_path(:user_id => @user.id), :class => "btn" %>
 
-<%end%>
+  <%end%>
 
 </div>
