@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126164742) do
+ActiveRecord::Schema.define(version: 20141220143913) do
+
+  create_table "chat_rooms", force: true do |t|
+    t.integer  "user_id"
+    t.string   "token"
+    t.boolean  "expired",    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.integer  "commentable_id"

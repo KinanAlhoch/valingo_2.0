@@ -26,8 +26,8 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      @user.languages_spoken = params[:user][:languages_spoken].reject(&:empty?)
-      @user.languages_learn = params[:user][:languages_learn].reject(&:empty?)
+      @user.languages_spoken = save_languages(params[:user][:languages_spoken])
+      @user.languages_learn = save_languages(params[:user][:languages_learn])
       @user.save
       redirect_to user_path(@user)
     else
@@ -44,6 +44,16 @@ redirect_to root_path
   end
 
   private
+
+  def save_languages(param)
+    languages = ""
+    param.each do |lang|
+      unless lang.blank?
+	languages += "#{lang},"
+      end
+    end
+    languages
+  end
   def user_params
     params.require(:user).permit(:name, :city, :state, :country, :languages_spoken, :languages_learn)
   end

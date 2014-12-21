@@ -66,11 +66,10 @@
 	    <h3></h3>
 	    <ul class="nav nav-list">
 	      <li class="nav-header"></li>
-	      <li><%= link_to "Edit Profile", edit_user_path(current_user)  %></li>
-	      <li><%= link_to "Pals", pals_users_path  %></li>
-	      <li><%= link_to "Messages", messages_path  %></li>
-	      <li><%= link_to "Start a Chat",  new_chat_room_path, :target => "_blank" %></li>
-	      <li><%= link_to "Find a Chat", chat_rooms_path  %></li>
+	      <div class="row custom-row">
+		Chatting with <%= @chat_room.user.name %> <br/>
+		Languages: <%= @chat_room.user.languages_spoken %>
+	      </div>
 
 	    </ul>
 	  </div><!--/.well -->
@@ -81,17 +80,7 @@
 	  <%= yield %>
 	</div>
 	<div class="span3">
-	  <h3>Recommended Pals</h3>
-	  <% recommended_pals.each do |pal| %>
-	    <div class="row custom-row">
-	      <%= link_to pal.email, user_path(pal) %><br/>
-		Languages:
-	      <%unless pal.languages_spoken.blank?%>
-		<%= pal.languages_spoken %>
-	      <%end%>
-	      <%= link_to "Add as a pal", add_pal_user_path(pal) %>
-	    </div>
-	  <%end%>
+
 
 	</div>
 
