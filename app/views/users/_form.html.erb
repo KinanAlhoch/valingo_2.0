@@ -29,14 +29,14 @@
   <div class="control-group">
     <%= f.label :languages_spoken, 'Languages You can Speak', :class => 'control-label'  %>
     <div class="controls">
-      <%= f.select(:languages_spoken, languages_list, {}, {multiple: true}) %>
+      <%= f.select(:languages_spoken, languages_list, {:selected => @user.languages_spoken.split(',')}, {multiple: true}) %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :languages_learn, 'Languages You want to learn', :class => 'control-label' %>
     <div class="controls">
-      <%= f.select(:languages_learn,languages_list,{}, {multiple: true}) %>
+      <%= f.select(:languages_learn,languages_list,{:selected => @user.languages_learn.split(',')}, {multiple: true}) %>
     </div>
   </div>
 
