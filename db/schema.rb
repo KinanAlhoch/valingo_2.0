@@ -11,12 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141220143913) do
+ActiveRecord::Schema.define(version: 20141228161445) do
 
   create_table "chat_rooms", force: true do |t|
     t.integer  "user_id"
     t.string   "token"
     t.boolean  "expired",    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "chat_rooms_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "chat_room_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,6 +82,14 @@ ActiveRecord::Schema.define(version: 20141220143913) do
 
   add_index "messages", ["ancestry"], name: "index_messages_on_ancestry", using: :btree
   add_index "messages", ["sent_messageable_id", "received_messageable_id"], name: "acts_as_messageable_ids", using: :btree
+
+  create_table "notes", force: true do |t|
+    t.text     "note"
+    t.integer  "user_id"
+    t.integer  "chat_room_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

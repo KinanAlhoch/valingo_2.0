@@ -8,6 +8,9 @@ class ChatRoomsController < ApplicationController
     @chat_room = ChatRoom.new(:user_id => current_user.id)
     @chat_room.token =  SecureRandom.urlsafe_base64
     if @chat_room.save
+      unless @chat_room.users.include?(current_user)
+	@chat_room.users << current_user
+      end
       redirect_to chat_room_path(@chat_room)
     else
       redirect_to root_path, :notice => "Something went wrong, plz try again"
@@ -18,6 +21,9 @@ class ChatRoomsController < ApplicationController
 
   def show
     @chat_room = ChatRoom.find(params[:id])
+    unless @chat_room.users.include?(current_user)
+      @chat_room.users << current_user
+    end
     render :layout => "chat_room"
   end
 end

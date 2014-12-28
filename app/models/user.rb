@@ -6,9 +6,11 @@ class User < ActiveRecord::Base
 
   acts_as_follower
   acts_as_followable
-#  serialize :languages_spoken, Array
-#  serialize :languages_learn, Array
+  #  serialize :languages_spoken, Array
+  #  serialize :languages_learn, Array
 
   has_many :home_feeds, :dependent => :destroy
+  has_many :chat_rooms_users
+  has_many :chat_rooms, :through =>  :chat_rooms_users
   acts_as_messageable :required => [:topic, :body],:class_name => "Message"
 end
