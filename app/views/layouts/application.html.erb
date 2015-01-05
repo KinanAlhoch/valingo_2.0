@@ -52,8 +52,14 @@
             <ul class="nav">
               <li><%= link_to "Home", root_path  %></li>
               <li><%= link_to "About", "#"  %></li>
-              <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
+
             </ul>
+	    <ul class="nav" style="float: right">
+	      <li >
+		<a href="<%=destroy_user_session_path%>" data-method="delete">
+		  <i class="fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a>
+	      </li>
+	    </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -85,7 +91,7 @@
 	  <% recommended_pals.each do |pal| %>
 	    <div class="row custom-row">
 	      <%= link_to pal.email, user_path(pal) %><br/>
-		Languages:
+		      Languages:
 	      <%unless pal.languages_spoken.blank?%>
 		<%= pal.languages_spoken %>
 	      <%end%>
