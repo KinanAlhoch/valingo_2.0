@@ -1,7 +1,7 @@
 <% count = object.root_comments.count  %>
 <div id="comments">
   <%if count > 3%>
-    <%= render :partial => "comments/comments", :locals => {:comments => object.root_comments.last(3).order('created_at desc') }  %>
+    <%= render :partial => "comments/comments", :locals => {:comments => object.root_comments.last(3) }  %>
     <div>
       <%= link_to "View #{count - 3} more Comments", see_more_comments_comments_path(:object_id => object.id, :class_name => object.class), :remote => true %>
     </div>
