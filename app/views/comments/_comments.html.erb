@@ -2,14 +2,16 @@
   <div class="post comments-section">
     <div class="user-profile-pic-wrapper">
       <div class="user-profile-pic-normal">
+	<a href="<%= user_path(comment.user) %>">
+	  <%= image_tag(profile_picture(comment.user), :style => "width: 25px;") %>
+	  <%= comment.user.name %>
+	</a>
       </div>
     </div>
     <div class="info-wrapper">
       <div class="username">
 	<span class="dark-text">
-	  <a href="<%= user_path(comment.user) %>">
-	    <%= comment.user.name %>
-	  </a>
+
 	</span>
       </div>
       <div class="info" style="color: black; font-size: 15px;">

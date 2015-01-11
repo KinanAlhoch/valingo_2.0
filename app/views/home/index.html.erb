@@ -21,14 +21,16 @@
 
     <div class="user-profile-pic-wrapper">
 
+      <a href="<%= user_path(feed.user) %>">
+	 <%= image_tag(profile_picture(feed.user), :style => "width: 25px;") %>
+	<span class="dark-text">
+	  <%= feed.user.name %>
+	</span> <span class="dark-text"></span>
+      </a>
     </div>
     <div class="info-wrapper">
       <div class="username" style="color: grey">
-	<a href="#">
-	  <span class="dark-text">
-	    <%= feed.user.name %>
-	  </span> <span class="dark-text"></span>
-	</a>
+
       </div>
       <div class="info" style="font-size: 16px;
 	   font-family: -webkit-body; color: black">
