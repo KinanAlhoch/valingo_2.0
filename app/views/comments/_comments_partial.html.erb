@@ -1,33 +1,15 @@
-<% object.root_comments.each do |comment| %>
-  <div class="post comments-section">
-    <div class="user-profile-pic-wrapper">
-      <div class="user-profile-pic-normal">
-	
-      </div>
+<% count = object.root_comments.count  %>
+<div id="comments">
+  <%if count > 3%>
+    <%= render :partial => "comments/comments", :locals => {:comments => object.root_comments.first(3) }  %>
+    <div>
+      <%= link_to "View #{count - 3} more Comments", see_more_comments_comments_path(:object_id => object.id, :class_name => object.class), :remote => true %>
     </div>
-    <div class="info-wrapper">
-      <div class="username">
-	<span class="dark-text">
-	  <a href="<%= user_path(comment.user) %>">
-	    <%= comment.user.name %>
-	  </a>
-	</span>
-      </div>
-      <div class="info" style="color: black; font-size: 15px;">
-	
-	  <%= comment.body %>
+  <%else%>
+    <%= render :partial => "comments/comments", :locals => {:comments => object.root_comments }  %>
+  <%end%>
+</div>
 
-      </div>
-      <div class="more-details">
-	<ul class="post-links">
-	  <li><a href="#" class="muted"><%=time_ago_in_words(comment.created_at) %></a></li>
-	</ul>
-      </div>
-
-    </div>
-    <div class="clearfix"></div>
-  </div>
-<%end%>
 <%= form_for Comment.new, :remote => true do |f| %>
   <%= hidden_field_tag "object_id", object.id  %>
   <%= hidden_field_tag "class_name", object.class %>

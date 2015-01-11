@@ -30,7 +30,11 @@ VideoChatTest::Application.routes.draw do
       get :conversation
     end
   end
-  resources :comments
+  resources :comments do
+    collection do
+      get :see_more_comments
+    end
+  end
   resources :chat_rooms
 
   # Example of regular route:

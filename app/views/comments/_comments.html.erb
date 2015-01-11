@@ -1,0 +1,26 @@
+<% comments.each do |comment| %>
+  <div class="post comments-section">
+    <div class="user-profile-pic-wrapper">
+      <div class="user-profile-pic-normal">
+      </div>
+    </div>
+    <div class="info-wrapper">
+      <div class="username">
+	<span class="dark-text">
+	  <a href="<%= user_path(comment.user) %>">
+	    <%= comment.user.name %>
+	  </a>
+	</span>
+      </div>
+      <div class="info" style="color: black; font-size: 15px;">
+	<%= comment.body %>
+      </div>
+      <div class="more-details">
+	<ul class="post-links">
+	  <li><a href="#" class="muted"><%=time_ago_in_words(comment.created_at) %></a></li>
+	</ul>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+<%end%>

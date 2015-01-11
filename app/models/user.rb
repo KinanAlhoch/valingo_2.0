@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   acts_as_follower
   acts_as_followable
+  validates :name, :presence => true
   #  serialize :languages_spoken, Array
   #  serialize :languages_learn, Array
 
@@ -14,4 +15,10 @@ class User < ActiveRecord::Base
   has_many :chat_rooms, :through =>  :chat_rooms_users
   acts_as_messageable :required => [:topic, :body],:class_name => "Message"
   mount_uploader :picture, UserPictureUploader
+
+  def feeds
+    user_ids = self.followers(User).map(&:id)
+    user_ids << self.id
+    HomeFeed.where('user_id IN (?)', user_ids).order('created_at desc')
+  end
 end

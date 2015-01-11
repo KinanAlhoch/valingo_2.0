@@ -51,25 +51,27 @@
             <ul class="nav">
               <li><%= link_to "Home", "#"  %></li>
               <li><%= link_to "About", "#"  %></li>
-         
-            </ul>
+
+            </ul>   <ul class="nav" style="float: right">
+	      <li >
+		<a href="<%=new_user_session_path%>">
+		  <i class="fa fa-power-off"></i>&nbsp;&nbsp;Log IN</a>
+	      </li>
+	    </ul>
+
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
     <div class="container">
-        <div class="row">
-          <div class="span9">
-            <%= bootstrap_flash %>
-            <%= yield %>
-          </div>
-       <!--/span-->
-        </div><!--/row-->
-
-      <footer>
-        <p>&copy; Company 2014</p>
-      </footer>
+      <div class="row">
+	<div class="span9">
+	  <%= bootstrap_flash %>
+	  <%= yield %>
+	</div>
+	<!--/span-->
+      </div><!--/row-->
 
     </div> <!-- /container -->
 

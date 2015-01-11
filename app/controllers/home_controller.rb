@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   require 'vline'
 
   def index
-    @feeds = HomeFeed.order('created_at desc')
+    @feeds = current_user.feeds
   end
 
   def add_feed
