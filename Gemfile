@@ -14,6 +14,7 @@ gem 'acts_as_commentable_with_threading'
 gem 'acts-as-messageable'
 gem 'carrierwave'
 gem 'fog'
+gem 'best_in_place', :git => 'https://github.com/aaronchi/best_in_place.git'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

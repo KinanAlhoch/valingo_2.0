@@ -9,6 +9,7 @@ VideoChatTest::Application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'home#index'
    post "/home/add_feed", :to => "home#add_feed"
+   put "/notes", :to => "notes#create"
 
   resources :users do
     collection do
@@ -36,6 +37,7 @@ VideoChatTest::Application.routes.draw do
     end
   end
   resources :chat_rooms
+  resources :notes
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

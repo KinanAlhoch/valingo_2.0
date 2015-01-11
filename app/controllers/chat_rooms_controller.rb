@@ -21,6 +21,14 @@ class ChatRoomsController < ApplicationController
 
   def show
     @chat_room = ChatRoom.find(params[:id])
+    @note = Note.where('chat_room_id = ? AND user_id = ?', @chat_room.id, current_user.id).first
+    if @note.blank?
+      @note = Note.new
+      @note.chat_room = @chat_room
+      @note.user = current_user
+      @note.save
+    end
+
     unless @chat_room.users.include?(current_user)
       @chat_room.users << current_user
     end
