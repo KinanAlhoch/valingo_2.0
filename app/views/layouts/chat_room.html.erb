@@ -51,10 +51,10 @@
           <div class="container nav-collapse">
             <ul class="nav">
               <li><%= link_to "Home", root_path  %></li>
-              <li><%= link_to "About", "#"  %></li>
-              
+	      <li><%= link_to "Profile", user_path(current_user)  %></li>
+
             </ul>
-	      <ul class="nav" style="float: right">
+	    <ul class="nav" style="float: right">
 	      <li >
 		<a href="<%=destroy_user_session_path%>" data-method="delete">
 		  <i class="fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a>
@@ -78,7 +78,7 @@
 		<br/>
 		Room Users: <br/>
 		<%@chat_room.users.each do |user|%>
-		<span style="color: blue">  <%= link_to user.name, user_path(user) %> </span><br/>
+		  <span style="color: blue">  <%= link_to user.name, user_path(user) %> </span><br/>
 		<%end%>
 	      </div>
 

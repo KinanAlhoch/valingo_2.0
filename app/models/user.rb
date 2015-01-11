@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   acts_as_follower
   acts_as_followable
   validates :name, :presence => true
+  validates :sex, :presence => true
   #  serialize :languages_spoken, Array
   #  serialize :languages_learn, Array
 

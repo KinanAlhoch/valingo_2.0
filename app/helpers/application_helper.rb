@@ -17,4 +17,12 @@ module ApplicationHelper
     ]
   end
 
+  def profile_picture(user)
+    if user.picture.blank?
+      '/assets/default_pic.jpg'
+    else
+      user.picture.url
+    end
+  end
+
 end

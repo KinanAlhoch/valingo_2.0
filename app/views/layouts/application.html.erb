@@ -51,7 +51,7 @@
           <div class="container nav-collapse">
             <ul class="nav">
               <li><%= link_to "Home", root_path  %></li>
-              <li><%= link_to "About", "#"  %></li>
+              <li><%= link_to "Profile", user_path(current_user)  %></li>
 
             </ul>
 	    <ul class="nav" style="float: right">
@@ -90,8 +90,9 @@
 	  <h3>Recommended Pals</h3>
 	  <% recommended_pals.each do |pal| %>
 	    <div class="row custom-row">
+	      <%= image_tag(profile_picture(current_user), :style => "width: 50px;") %>
 	      <%= link_to pal.name, user_path(pal) %><br/>
-		      Languages:
+			Languages:
 	      <%unless pal.languages_spoken.blank?%>
 		<%= pal.languages_spoken %>
 	      <%end%>

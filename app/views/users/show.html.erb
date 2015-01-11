@@ -1,11 +1,11 @@
 <%- model_class = User -%>
 <div class="page-header">
-   <%if !@user.picture.blank?%>
-  <%= image_tag @user.picture.url %>
-  <%end%>
+
+  <%= image_tag profile_picture(@user) %>
+
 </div>
 <div>
- 
+
 </div>
 
 <dl class="dl-horizontal">
