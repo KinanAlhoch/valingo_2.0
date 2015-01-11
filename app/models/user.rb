@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
   has_many :chat_rooms_users
   has_many :chat_rooms, :through =>  :chat_rooms_users
   acts_as_messageable :required => [:topic, :body],:class_name => "Message"
+  mount_uploader :picture, UserPictureUploader
 end

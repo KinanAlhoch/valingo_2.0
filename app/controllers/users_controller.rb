@@ -55,6 +55,6 @@ redirect_to root_path
     languages
   end
   def user_params
-    params.require(:user).permit(:name, :city, :state, :country, :languages_spoken, :languages_learn)
+    params.require(:user).permit(:name, :city, :state, :country, :languages_spoken, :languages_learn, :picture)
   end
 end

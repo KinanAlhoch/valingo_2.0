@@ -1,4 +1,4 @@
-<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @user, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
 
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
@@ -25,18 +25,25 @@
     </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label :picture, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :picture, :class => 'text_field' %>
+    </div>
+  </div>
+
 
   <div class="control-group">
     <%= f.label :languages_spoken, 'Languages You can Speak', :class => 'control-label'  %>
     <div class="controls">
-      <%= f.select(:languages_spoken, languages_list, {:selected => @user.languages_spoken.split(',')}, {multiple: true}) %>
+      <%= f.select(:languages_spoken, languages_list, {:selected => @user.languages_spoken.blank? ? '' : @user.languages_spoken.split(',')}, {multiple: true}) %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :languages_learn, 'Languages You want to learn', :class => 'control-label' %>
     <div class="controls">
-      <%= f.select(:languages_learn,languages_list,{:selected => @user.languages_learn.split(',')}, {multiple: true}) %>
+      <%= f.select(:languages_learn,languages_list,{:selected => @user.languages_learn.blank? ? '' : @user.languages_learn.split(',')}, {multiple: true}) %>
     </div>
   </div>
 

@@ -13,6 +13,7 @@ gem "socialization"
 gem 'acts_as_commentable_with_threading'
 gem 'acts-as-messageable'
 gem 'carrierwave'
+gem 'fog'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
