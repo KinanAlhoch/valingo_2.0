@@ -1,6 +1,4 @@
-
 <h3>New Message to <b><%= @user.name %></b></h3>
-
 <%=form_tag send_message_messages_path do%>
   <%= hidden_field_tag :user_id, @user.id %>
   <div class="row custom-row">
@@ -27,7 +25,6 @@
       </div>
     </div>
   </div>
-
   <div class="row custom-row">
     <div class="col-md-10">
       <button class="btn btn-primary btn-cons pull-right" type="submit">Send</button>

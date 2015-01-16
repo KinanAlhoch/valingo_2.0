@@ -38,7 +38,6 @@
     <script src="https://static.vline.com/vline.js" type="text/javascript"></script>
   </head>
   <body>
-
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
@@ -77,11 +76,9 @@
 	      <li><%= link_to "Messages", messages_path  %></li>
 	      <li><%= link_to "Start a Chat",  new_chat_room_path, :target => "_blank" %></li>
 	      <li><%= link_to "Find a Chat", chat_rooms_path  %></li>
-
 	    </ul>
 	  </div><!--/.well -->
 	</div><!--/span-->
-
 	<div class="span6">
 	  <%= bootstrap_flash %>
 	  <%= yield %>
@@ -92,23 +89,18 @@
 	    <div class="row custom-row">
 	      <%= image_tag(profile_picture(current_user), :style => "width: 50px;") %>
 	      <%= link_to pal.name, user_path(pal) %><br/>
-			Languages:
+					Languages:
 	      <%unless pal.languages_spoken.blank?%>
 		<%= pal.languages_spoken %>
 	      <%end%>
 	      <%= link_to "Add as a pal", add_pal_user_path(pal) %>
 	    </div>
 	  <%end%>
-
 	</div>
-
       </div><!--/row-->
-
       <footer>
         <p>&copy; Valingo 2014</p>
       </footer>
-
     </div> <!-- /container -->
-
   </body>
 </html>

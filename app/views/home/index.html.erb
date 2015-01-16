@@ -1,28 +1,21 @@
 <%= form_tag "/home/add_feed", :multipart => true do %>
-
   <div class="row" style="margin-left: 10px;">
-
     <div class="tiles white">
       <textarea rows="3" name="status" class="form-control user-status-box post-input"  placeholder="Whats on your mind?" style="width: 100%"></textarea>
     </div>
     <div class="tiles grey padding-10">
-
       <div class="pull-right">
 	<button class="btn btn-primary btn-sm btn-small" type="submit">POST</button>
       </div>
       <div class="clearfix"></div>
     </div>
-
   </div>
 <%end%><br/>
 <%@feeds.each do |feed|%>
   <div class="row custom-row">
-
-
     <div class="user-profile-pic-wrapper">
-
       <a href="<%= user_path(feed.user) %>">
-	 <%= image_tag(profile_picture(feed.user), :style => "width: 25px;") %>
+	<%= image_tag(profile_picture(feed.user), :style => "width: 25px;") %>
 	<span class="dark-text">
 	  <%= feed.user.name %>
 	</span> <span class="dark-text"></span>
@@ -30,26 +23,21 @@
     </div>
     <div class="info-wrapper">
       <div class="username" style="color: grey">
-
       </div>
       <div class="info" style="font-size: 16px;
 	   font-family: -webkit-body; color: black">
 	   <%= feed.status %>
       </div>
-
       <div class="more-details">
 	<%= time_ago_in_words(feed.created_at) %> ago
-
       </div>
       <div class="clearfix"></div>
-
       <div class="clearfix"></div>
       <div id="comments_div_<%= feed.id %>" class="custom-row">
 	<%= render :partial => "/comments/comments_partial", :locals => {:object => feed} %>
       </div>
     </div>
     <div class="clearfix"></div>
-
   </div><br/>
 <%end%>
 

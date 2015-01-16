@@ -1,6 +1,4 @@
-
 <h3>Reply to <b><%= sender(@message).name %></b></h3>
-
 <%=form_tag reply_messages_path do%>
   <%= hidden_field_tag :message_id, @message.id %>
   <div class="row custom-row" >
@@ -15,7 +13,6 @@
       </div>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-10">
       <button class="btn btn-primary btn-cons pull-right" type="submit">Reply</button>

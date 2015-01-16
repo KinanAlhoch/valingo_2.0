@@ -4,8 +4,6 @@
       <div class="col-md-4 custom-row">
 	<%= image_tag(profile_picture(user), :style => "Width: 50px;") %>
 	<%= link_to user.name, user_path(user) %>
-
-
 	<span style="float: right; margin-top: 15px;">
 	  <%= link_to "Unfriend", unfriend_user_path(user) %>
 	</span>

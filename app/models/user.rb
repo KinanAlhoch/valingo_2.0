@@ -22,4 +22,10 @@ class User < ActiveRecord::Base
     user_ids << self.id
     HomeFeed.where('user_id IN (?)', user_ids).order('created_at desc')
   end
+
+  def recommended_pals
+    already_friends_ids = self.followers(User).map(&:id)
+    already_friends_ids << self.id
+    User.where('id NOT IN (?)', already_friends_ids)
+  end
 end

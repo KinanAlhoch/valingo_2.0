@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-VideoChatTest::Application.config.secret_key_base = 'c0c1e6f1ce56cd4b0c85820ebdf96fa2fe801168077bf2f8a8936a5b0b7e13507c707a8bc755d71c47fdc6b12797555ed622fc8be0101c00fa44df1f203fbfc9'
+Valingo::Application.config.secret_key_base = 'c0c1e6f1ce56cd4b0c85820ebdf96fa2fe801168077bf2f8a8936a5b0b7e13507c707a8bc755d71c47fdc6b12797555ed622fc8be0101c00fa44df1f203fbfc9'

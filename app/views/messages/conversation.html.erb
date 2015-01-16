@@ -12,7 +12,6 @@
       </div>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-10">
       <button class="btn btn-primary btn-cons pull-right" type="submit">Reply</button>
@@ -25,8 +24,6 @@
       <%sender = sender(message)%>
       <b><%= link_to sender.name, user_path(sender) %></b> <br/>
       <b><%= message.topic %>:</b>&nbsp;<%= message.body %>
-
-
     </div>
   <%end%>
 <%else%>

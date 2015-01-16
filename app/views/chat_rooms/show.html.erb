@@ -2,51 +2,26 @@
   <h3>Chalk Board</h3>
   <div class="row" style="margin-left: 10px;">
     <div class="tiles white">
-    
+
   <%#*<textarea rows="3" name="note[note]" class="form-control user-status-box post-input"  placeholder="Write Notes here..." style="width: 100%"></textarea>%>
-      <%= best_in_place @note, :note, :type => :textarea, :nil => "Click here to enter notes..."%>
+      <%= best_in_place @note, :note, :type => :textarea, :nil => "Click here to enter notes...", :display_with => :simple_format %>
     </div>
     <div class="tiles grey padding-10">
       <div class="clearfix"></div>
     </div>
   </div>
 <%end%>
-<script type="text/javascript">
-  $(document).ready(function() {
-    /* Activating Best In Place */
-    jQuery(".best_in_place").best_in_place();
-  });
-</script>
-<script type="text/javascript">
-  // Initialize API key, session, and token...
-  // Think of a session as a room, and a token as the key to get in to the room
-  // Sessions and tokens are generated on your server and passed down to the client
-  var apiKey = "45115102";
-  var sessionId = "2_MX40NTExNTEwMn5-MTQxOTQ0NzMzMjUzNH4ybjZZajNEeTJBM0c5UjRRMWYwSG55UFV-fg";
-  var token = "T1==cGFydG5lcl9pZD00NTExNTEwMiZzaWc9ZDQ5NzM5YmMwZmM1MWE1ZmEwMWM3ZDE4MGQ2OWYzYmIyMzI0MmZhMzpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTJfTVg0ME5URXhOVEV3TW41LU1UUXhPVFEwTnpNek1qVXpOSDR5YmpaWmFqTkVlVEpCTTBjNVVqUlJNV1l3U0c1NVVGVi1mZyZjcmVhdGVfdGltZT0xNDE5NDQ3Mzc2Jm5vbmNlPTAuNDIyMDIwMzE5MzA3MTY5Mg==";
 
-  // Initialize session, set up event listeners, and connect
-  var session = OT.initSession(apiKey, sessionId);
-
-  session.on("streamCreated", function(event) {
-    session.subscribe(event.stream);
-  });
-
-  session.connect(token, function(error) {
-    var publisher = OT.initPublisher();
-    session.publish(publisher);
-  });
-</script>
 <h1></h1>
 <div id="myPublisherDiv">
-
 </div>
 <style type="text/css">
 <%#*.OT_mirrored{%>
 <%#*margin-top: -200px;%>
 <%#*}%>
-textarea{
-  width: 600px;
-  height: 100px;
-}
+  textarea{
+    width: 600px;
+    height: 100px;
+  }
 </style>
+<script src="/assets/video-tok.js" type="text/javascript"></script>

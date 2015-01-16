@@ -2,12 +2,10 @@
   <% @chat_rooms.each do |room| %>
     <div class="row">
       <div class="span3 custom-row">
-	  Room Owner:  <%= room.user.name %> <br/>
-	Languages: <%= room.user.languages_spoken %>
-
+	      Room Owner:  <%= room.user.name %> <br/>
+	    Languages: <%= room.user.languages_spoken %>
 	<%= link_to "Join", chat_room_path(room), :target => "_blank"  %>
       </div>
     </div>
-
   <%end%>
 </div>

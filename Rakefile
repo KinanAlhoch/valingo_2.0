@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-VideoChatTest::Application.load_tasks
+Valingo::Application.load_tasks

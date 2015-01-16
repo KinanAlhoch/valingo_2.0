@@ -9,7 +9,6 @@
     <%= render :partial => "comments/comments", :locals => {:comments => object.root_comments }  %>
   <%end%>
 </div>
-
 <%= form_for Comment.new, :remote => true do |f| %>
   <%= hidden_field_tag "object_id", object.id  %>
   <%= hidden_field_tag "class_name", object.class %>
