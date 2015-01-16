@@ -2,8 +2,6 @@
   <h3>Chalk Board</h3>
   <div class="row" style="margin-left: 10px;">
     <div class="tiles white">
-
-  <%#*<textarea rows="3" name="note[note]" class="form-control user-status-box post-input"  placeholder="Write Notes here..." style="width: 100%"></textarea>%>
       <%= best_in_place @note, :note, :type => :textarea, :nil => "Click here to enter notes...", :display_with => :simple_format %>
     </div>
     <div class="tiles grey padding-10">
