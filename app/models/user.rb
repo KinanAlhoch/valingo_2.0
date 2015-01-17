@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
+  attr_accessor :similiarity_count
 
   acts_as_follower
   acts_as_followable
@@ -24,8 +25,29 @@ class User < ActiveRecord::Base
   end
 
   def recommended_pals
-    already_friends_ids = self.followers(User).map(&:id)
-    already_friends_ids << self.id
-    User.where('id NOT IN (?)', already_friends_ids)
+    users_to_be_added = []
+    if self.languages_spoken.blank? || self.languages_learn.blank?
+      users_to_be_added
+    else
+      already_friends_ids = self.followers(User).map(&:id)
+      already_friends_ids << self.id
+      available_users = User.where('id NOT IN (?)', already_friends_ids)
+      available_users.each do |user|
+	if user.languages_spoken.blank? || user.languages_learn.blank?
+	  users_to_be_added << user
+	else
+	  count= (self.languages_spoken.split(',') & user.languages_learn.split(',')).size + (self.languages_learn.split(',') & user.languages_spoken.split(',')).size
+	  user.similiarity_count = count
+	  users_to_be_added << user
+	  if users_to_be_added[0].similiarity_count < count
+	    temp = users_to_be_added[0]
+	    users_to_be_added[0] = user
+	    users_to_be_added = users.to_be_added.pop
+	    users_to_be_added << temp
+	  end
+	end
+      end
+      users_to_be_added
+    end
   end
 end
