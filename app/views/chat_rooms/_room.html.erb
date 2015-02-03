@@ -1,0 +1,30 @@
+<%= form_for note,:url =>  @note.new_record? ? notes_path : note_path(note), :method => note.new_record? ? :post : :put, :html => {:id=> "note_form", :remote => true} do |f| %>
+  <h3>NoteBook</h3>
+  <div class="row" style="margin-left: 10px;">
+    <div class="tiles white">
+      <%= f.text_area :note, :placeholder => "Click here to enter notes..." %>
+    </div>
+    <div class="tiles grey padding-10">
+      <div class="clearfix"></div>
+    </div>
+  </div>
+<%end%>
+
+<h1></h1>
+<div id="myPublisherDiv">
+</div>
+<style type="text/css">
+<%#*.OT_mirrored{%>
+<%#*margin-top: -200px;%>
+<%#*}%>
+  textarea{
+    width: 600px;
+    height: 100px;
+  }
+</style>
+<%#*<script src="/assets/video-tok.js" type="text/javascript"></script>%>
+<script type="text/javascript">
+  $('#note_note').focusout(function(){
+    $('#note_form').submit();
+});
+</script>
