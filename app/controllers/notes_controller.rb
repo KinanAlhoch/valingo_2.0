@@ -1,4 +1,8 @@
 class NotesController < ApplicationController
+
+  def index
+    @notes = current_user.notes
+  end
   
   def create
     @note = Note.new(note_params)

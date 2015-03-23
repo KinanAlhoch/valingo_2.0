@@ -1,0 +1,12 @@
+<h3>Showing your notes</h3>
+<% @notes.each do |note| %>
+  <div class="row custom-row">
+    <div class="col-md-4">
+      Chat Room: <%= note.chat_room.try(:title) %>
+    </div>
+    <div class="col-md-8">
+      <%= note.note %>
+    </div>
+  </div>
+  <hr></hr>
+<%end%>

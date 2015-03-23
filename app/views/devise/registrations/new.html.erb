@@ -26,7 +26,7 @@
       Female:  <%= f.radio_button :sex, :value => "Female", autofocus: true %>
     </div>
     <div><%= f.label :date_of_birth %><br />
-      <%= f.text_field :date_of_birth, autofocus: true, placeholder: "yyyy-mm-dd" %></div>
+      <%= f.date_select :date_of_birth, autofocus: true, placeholder: "yyyy-mm-dd" %></div>
 
     <div><%= f.label :bio %><br />
       <%= f.text_area :bio, autofocus: true, placeholder: "Tell something about yourself" %></div>

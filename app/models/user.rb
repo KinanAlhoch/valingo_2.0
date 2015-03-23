@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :home_feeds, :dependent => :destroy
   has_many :chat_rooms_users
   has_many :chat_rooms, :through =>  :chat_rooms_users
+  has_many :notes
   acts_as_messageable :required => [:topic, :body],:class_name => "Message"
   mount_uploader :picture, UserPictureUploader
 
