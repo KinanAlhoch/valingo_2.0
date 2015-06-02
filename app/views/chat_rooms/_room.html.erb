@@ -1,16 +1,30 @@
-<%= form_for note,:url =>  @note.new_record? ? notes_path : note_path(note), :method => note.new_record? ? :post : :put, :html => {:id=> "note_form", :remote => true} do |f| %>
-  <h3>NoteBook</h3>
+<%= form_for note, :html => {:id=> "note_form", :remote => true} do |f| %>
+
+  <%= f.hidden_field :chat_room_id, :value => chat_room_id %>
   <div class="row" style="margin-left: 10px;">
     <div class="tiles white">
       <%= f.text_area :note, :placeholder => "Click here to enter notes..." %>
     </div>
     <div class="tiles grey padding-10">
+      <%= f.submit 'Enter' %>
       <div class="clearfix"></div>
     </div>
   </div>
 <%end%>
 
-<h1></h1>
+<div class="row custom-row" style="width: 595px;height: 200px;overflow: auto">
+  <div id="messagesDiv">
+    <%unless @notes.blank?%>
+      <%@notes.each do |note|%><br/>
+
+	<b><%=note.user.name %></b>:
+	<%= note.note %>
+      <%end%>
+    <%else%>
+      No Notes to show
+    <%end%>
+  </div>
+</div>
 <div id="myPublisherDiv">
 </div>
 <style type="text/css">
@@ -23,8 +37,22 @@
   }
 </style>
 <script src="/assets/video-tok.js" type="text/javascript"></script>
+<%#*<script type="text/javascript">%>
+<%#*$('#note_note').focusout(function(){%>
+<%#*$('#note_form').submit();%>
+<%#*});%>
+<%#*</script>%>
 <script type="text/javascript">
-  $('#note_note').focusout(function(){
-    $('#note_form').submit();
-});
+  var fb = new Firebase("https://valingo.firebaseio.com/<%= chat_room_id %>");
+
+  //SAVE DATA
+<%#*fb.set({ name: "Alex Wolfe" });%>
+  //LISTEN FOR REALTIME CHANGES
+  fb.on("child_added", function(data) {
+    var name = data.val() ? data.val().name : "";
+    var text = data.val() ? data.val().text : "";
+    $('.form-control').val('');
+    $('#messagesDiv').prepend( "<br/>" +"<b>" + name + "</b>" + ": " + text  );
+
+  });
 </script>
