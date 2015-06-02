@@ -23,6 +23,10 @@ class ChatRoomsController < ApplicationController
     @chat_room = ChatRoom.find(params[:id])
     @notes = Note.where('chat_room_id = ? ', @chat_room.id).order('created_at desc')
     @note = Note.new
+    unless @notes.blank?
+      firebase = Firebase::Client.new("https://valingo.firebaseio.com/")
+      firebase.delete("#{@chat_room.id}")
+    end
     unless @chat_room.users.include?(current_user)
       @chat_room.users << current_user
     end
