@@ -8,7 +8,6 @@ ruby '2.1.2'
 gem 'pg'
 gem 'vline-rails'
 gem 'devise'
-gem "twitter-bootstrap-rails"
 gem 'rails_12factor', group: :production
 gem "socialization"
 gem 'acts_as_commentable_with_threading'

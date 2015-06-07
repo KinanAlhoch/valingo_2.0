@@ -1,3 +1,23 @@
+<script src='//static.opentok.com/v2/js/opentok.min.js'></script>
+<script>var apiKey = 45254822;
+  var sessionId = '2_MX40NTI1NDgyMn5-MTQzMzY2OTE5MTg2NH5zYnpzR2JkR1Rvbi9oUFUyWTJPSzBQVVd-fg';
+  var session = OT.initSession(apiKey, sessionId);
+  session.on({
+    streamCreated: function(event) {
+      session.subscribe(event.stream, 'subscribersDiv', {insertMode: 'append'});
+    }
+  });
+  var token = 'T1==cGFydG5lcl9pZD00NTI1NDgyMiZzaWc9MjkxYjY5NmUwNWE0MGIyN2Y4NzMzZDkxYTUzYjc4NjEzOWMyNTQ2NTpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTJfTVg0ME5USTFORGd5TW41LU1UUXpNelkyT1RFNU1UZzJOSDV6WW5welIySmtSMVJ2Ymk5b1VGVXlXVEpQU3pCUVZWZC1mZyZjcmVhdGVfdGltZT0xNDMzNjc1MDM0Jm5vbmNlPTAuNTA4NTExMDAxNjUwMjUxNCZleHBpcmVfdGltZT0xNDMzNzYxNDM0';
+  session.connect(token, function(error) {
+    if (error) {
+      console.log(error.message);
+    } else {
+      session.publish('myPublisherDiv', {width: 320, height: 240});
+      console.log('connected to session');
+    }
+  });
+</script>
+<div id='myPublisherDiv'></div> 
 <%= form_for note, :html => {:id=> "note_form", :remote => true} do |f| %>
 
   <%= f.hidden_field :chat_room_id, :value => chat_room_id %>
@@ -21,22 +41,27 @@
 	<%= note.note %>
       <%end%>
     <%else%>
-      No Notes to show
+      <span id="span_no_notes">
+	No Notes to show
+      </span>
     <%end%>
   </div>
 </div>
-<div id="myPublisherDiv">
-</div>
+
 <style type="text/css">
-<%#*.OT_mirrored{%>
-<%#*margin-top: -200px;%>
-<%#*}%>
+  #myPublisherDiv{
+    width: 240px !important;
+    height: 240px !important;
+    overflow: hidden;
+    margin-left: 624px;
+    position: absolute;
+  }
   textarea{
     width: 600px;
     height: 100px;
   }
 </style>
-<script src="/assets/video-tok.js" type="text/javascript"></script>
+<%#*<script src="/assets/video-tok.js" type="text/javascript"></script>%>
 <%#*<script type="text/javascript">%>
 <%#*$('#note_note').focusout(function(){%>
 <%#*$('#note_form').submit();%>
@@ -52,6 +77,8 @@
     var name = data.val() ? data.val().name : "";
     var text = data.val() ? data.val().text : "";
     $('.form-control').val('');
+    $('#note_note').val('');
+    $('#span_no_notes').hide();
     $('#messagesDiv').prepend( "<br/>" +"<b>" + name + "</b>" + ": " + text  );
 
   });
