@@ -1,13 +1,13 @@
 <script src='//static.opentok.com/v2/js/opentok.min.js'></script>
 <script>var apiKey = 45254822;
-  var sessionId = '2_MX40NTI1NDgyMn5-MTQzMzY2OTE5MTg2NH5zYnpzR2JkR1Rvbi9oUFUyWTJPSzBQVVd-fg';
+  var sessionId = '2_MX40NTI1NDgyMn5-MTQzNDEzNjQyNDYwMX5UdkNEMThWNGl3TEJhSU0zRFdOT2FuRlB-fg';
   var session = OT.initSession(apiKey, sessionId);
   session.on({
     streamCreated: function(event) {
       session.subscribe(event.stream, 'subscribersDiv', {insertMode: 'append'});
     }
   });
-  var token = 'T1==cGFydG5lcl9pZD00NTI1NDgyMiZzaWc9MjkxYjY5NmUwNWE0MGIyN2Y4NzMzZDkxYTUzYjc4NjEzOWMyNTQ2NTpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTJfTVg0ME5USTFORGd5TW41LU1UUXpNelkyT1RFNU1UZzJOSDV6WW5welIySmtSMVJ2Ymk5b1VGVXlXVEpQU3pCUVZWZC1mZyZjcmVhdGVfdGltZT0xNDMzNjc1MDM0Jm5vbmNlPTAuNTA4NTExMDAxNjUwMjUxNCZleHBpcmVfdGltZT0xNDMzNzYxNDM0';
+  var token = 'T1==cGFydG5lcl9pZD00NTI1NDgyMiZzaWc9OWQyOTAxZmExNjE0MmYyZmE1OGNlMTA0NTBlZWEzZWZlZjcwMzk2MDpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTJfTVg0ME5USTFORGd5TW41LU1UUXpOREV6TmpReU5EWXdNWDVVZGtORU1UaFdOR2wzVEVKaFNVMHpSRmRPVDJGdVJsQi1mZyZjcmVhdGVfdGltZT0xNDM0MTM2NDU4Jm5vbmNlPTAuODE2NTcwMTAxODAzMjYyNCZleHBpcmVfdGltZT0xNDM2NzI3NDg5JmNvbm5lY3Rpb25fZGF0YT0=';
   session.connect(token, function(error) {
     if (error) {
       console.log(error.message);

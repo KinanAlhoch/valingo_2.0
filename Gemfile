@@ -17,6 +17,7 @@ gem 'fog'
 gem 'best_in_place', :git => 'https://github.com/aaronchi/best_in_place.git'
 gem 'rename'
 gem 'firebase'
+gem "opentok", "~> 2.3"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

@@ -42,6 +42,7 @@ GEM
       activerecord (>= 4.0)
       activesupport (>= 4.0)
       awesome_nested_set (>= 3.0)
+    addressable (2.3.8)
     ancestry (2.1.0)
       activerecord (>= 3.0.0)
     arel (4.0.2)
@@ -122,6 +123,9 @@ GEM
       virtus
     hashie (3.3.1)
     hike (1.2.3)
+    httparty (0.13.5)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.11)
     ice_nine (0.11.0)
     inflecto (0.0.2)
@@ -147,6 +151,10 @@ GEM
     net-ssh (2.9.1)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
+    opentok (2.3.0)
+      activesupport (>= 2.0)
+      addressable (~> 2.3)
+      httparty (~> 0.13.1)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.5)
@@ -245,6 +253,7 @@ DEPENDENCIES
   fog
   jbuilder (~> 1.2)
   jquery-rails
+  opentok (~> 2.3)
   pg
   rails (= 4.0.0)
   rails_12factor
